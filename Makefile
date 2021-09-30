@@ -40,3 +40,8 @@ login_container:
 
 compile:
 	docker run --rm -it -v `pwd`/src:/root kashiwabayuki/yawaraka-yara:1.0 bash -c "cd /root && make"
+	make move
+
+EXE := hlt.exe
+move: src/${EXE}
+	cp $< /mnt/d/Transfer/

@@ -1,8 +1,8 @@
-EXE := main.exe
-SOURCE_DIR := cpp
-MINGW_CPP := x86_64-w64-mingw32-g++
+EXE := hlt.exe
+SOURCE_DIR := c
+MINGW_GCC := x86_64-w64-mingw32-g++
 
-%.exe: ${SOURCE_DIR}/%.cpp
-	${MINGW_CPP} $< -o $@
+%.exe: ${SOURCE_DIR}/%.c
+	${MINGW_GCC} $< -o $@
 
 all: ${EXE}
