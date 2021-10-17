@@ -8,8 +8,6 @@ clear:
 	-find . -name ".cache" -exec rm {} \;
 	-find . -name "peda-session-*" -exec rm {} \;
 
-
-
 day := `date +"%Y_%m_%d"`
 m := autopush ${day}
 branch := origin master
@@ -38,10 +36,9 @@ build_container:
 login_container:
 	docker run --rm -it -v `pwd`/src:/root kashiwabayuki/yawaraka-yara:1.0 bash -c "cd /root && bash"
 
+move:
+	-find ./src/ -name "*.exe" -exec cp {} /mnt/d/Transfer \;
+
 compile:
 	docker run --rm -it -v `pwd`/src:/root kashiwabayuki/yawaraka-yara:1.0 bash -c "cd /root && make"
 	make move
-
-EXE := hlt.exe
-move: src/${EXE}
-	cp $< /mnt/d/Transfer/
