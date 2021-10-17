@@ -47,3 +47,4 @@ compile:
 run:
 	make compile
 	make move
+	
