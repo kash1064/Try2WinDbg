@@ -6,6 +6,21 @@ PUTDIR := /mnt/d/Transfer
 # ビルドに使用するコンテナイメージを指定
 CONTAINER := kashiwabayuki/try2windbg:1.0
 
+move:
+	-find ./src/ -name "*.exe" -exec cp {} ${PUTDIR} \;
+	-find ./src/ -name "*.exe" -exec mv {} ./bin --force \;
+	-find ./src/ -name "*.pdb" -exec cp {} ${PUTDIR} \;
+	-find ./src/ -name "*.pdb" -exec mv {} ./symbol --force \;
+
+compile:
+	docker run --rm -it -v `pwd`/src:/try2windbg ${CONTAINER} bash -c "cd /try2windbg && make"
+
+run:
+	make compile
+	make move
+
+
+# 管理用
 clear:
 	-find ./intel_386/outputs/ -name "*.o*" -exec rm {} \;
 	-find . -name "*.exe" -exec rm --force {} \;
@@ -15,7 +30,6 @@ clear:
 	-find . -name ".cache" -exec rm --force {} \;
 	-find . -name "peda-session-*" -exec rm --force {} \;
 	-find . -name ".python_history-*" -exec rm --force {} \;
-
 
 day := `date +"%Y_%m_%d"`
 m := autopush ${day}
@@ -40,16 +54,3 @@ start_docker:
 
 login_container:
 	docker run --rm -it -v `pwd`/src:/try2windbg ${CONTAINER} bash -c "cd /try2windbg && bash"
-
-move:
-	-find ./src/ -name "*.exe" -exec cp {} ${PUTDIR} \;
-	-find ./src/ -name "*.exe" -exec mv {} ./bin --force \;
-	-find ./src/ -name "*.pdb" -exec cp {} ${PUTDIR} \;
-	-find ./src/ -name "*.pdb" -exec mv {} ./symbol --force \;
-
-compile:
-	docker run --rm -it -v `pwd`/src:/try2windbg ${CONTAINER} bash -c "cd /try2windbg && make"
-
-run:
-	make compile
-	make move

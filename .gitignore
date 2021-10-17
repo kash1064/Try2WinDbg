@@ -1,5 +1,7 @@
 src/*.exe
+src/*.pdb
 bin/*.exe
+symbol/*.pdb
 .bash_history
 .wget-hsts
 .python_history
