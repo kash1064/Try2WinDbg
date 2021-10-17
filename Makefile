@@ -38,6 +38,7 @@ login_container:
 
 move:
 	-find ./src/ -name "*.exe" -exec cp {} /mnt/d/Transfer \;
+	-find ./src/ -name "*.exe" -exec mv {} ./bin \;
 
 compile:
 	docker run --rm -it -v `pwd`/src:/root kashiwabayuki/yawaraka-yara:1.0 bash -c "cd /root && make"
