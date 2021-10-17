@@ -35,10 +35,12 @@ start_docker:
 login_container:
 	docker run --rm -it -v `pwd`/src:/try2windbg kashiwabayuki/try2windbg:1.0 bash -c "cd /try2windbg && bash"
 
+# 作成した EXE と PDB ファイルを配置するパスを指定
+PUTDIR := /mnt/d/Transfer
 move:
-	-find ./src/ -name "*.exe" -exec cp {} /mnt/d/Transfer \;
+	-find ./src/ -name "*.exe" -exec cp {} ${PUTDIR} \;
 	-find ./src/ -name "*.exe" -exec mv {} ./bin --force \;
-	-find ./src/ -name "*.pdb" -exec cp {} /mnt/d/Transfer \;
+	-find ./src/ -name "*.pdb" -exec cp {} ${PUTDIR} \;
 	-find ./src/ -name "*.pdb" -exec mv {} ./symbol --force \;
 
 compile:
@@ -47,4 +49,3 @@ compile:
 run:
 	make compile
 	make move
-	
