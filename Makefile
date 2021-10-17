@@ -2,11 +2,14 @@ SHELL=/bin/bash
 
 clear:
 	-find ./intel_386/outputs/ -name "*.o*" -exec rm {} \;
-	# -find . -name "*.exe" -exec rm {} \;
-	-find . -name ".gdb_history" -exec rm {} \;
-	-find . -name ".bash_history" -exec rm {} \;
-	-find . -name ".cache" -exec rm {} \;
-	-find . -name "peda-session-*" -exec rm {} \;
+	-find . -name "*.exe" -exec rm --force {} \;
+	# -find . -name "*.pdb" -exec rm --force {} \;
+	-find . -name ".gdb_history" -exec rm --force {} \;
+	-find . -name ".bash_history" -exec rm --force {} \;
+	-find . -name ".cache" -exec rm --force {} \;
+	-find . -name "peda-session-*" -exec rm --force {} \;
+	-find . -name ".python_history-*" -exec rm --force {} \;
+
 
 day := `date +"%Y_%m_%d"`
 m := autopush ${day}
@@ -30,14 +33,16 @@ start_docker:
 	sudo /etc/init.d/docker start
 
 login_container:
-	docker run --rm -it -v `pwd`/src:/Try2WinDbg kashiwabayuki/try2windbg:1.0 bash -c "cd /Try2WinDbg && bash"
+	docker run --rm -it -v `pwd`/src:/try2windbg kashiwabayuki/try2windbg:1.0 bash -c "cd /try2windbg && bash"
 
 move:
 	-find ./src/ -name "*.exe" -exec cp {} /mnt/d/Transfer \;
 	-find ./src/ -name "*.exe" -exec mv {} ./bin --force \;
+	-find ./src/ -name "*.pdb" -exec cp {} /mnt/d/Transfer \;
+	-find ./src/ -name "*.pdb" -exec mv {} ./symbol --force \;
 
 compile:
-	docker run --rm -it -v `pwd`/src:/Try2WinDbg kashiwabayuki/try2windbg:1.0 bash -c "cd /Try2WinDbg && make"
+	docker run --rm -it -v `pwd`/src:/try2windbg kashiwabayuki/try2windbg:1.0 bash -c "cd /try2windbg && make"
 
 run:
 	make compile
