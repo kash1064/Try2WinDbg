@@ -1,2 +1,4 @@
 src/*.exe
 bin/*.exe
+.bash_history
+.wget-hsts

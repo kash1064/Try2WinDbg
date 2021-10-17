@@ -29,19 +29,15 @@ cache_clear:
 start_docker:
 	sudo /etc/init.d/docker start
 
-build_container:
-	# docker pull kauplan/review2.5
-	docker build -t writingbook .
-
 login_container:
-	docker run --rm -it -v `pwd`/src:/root kashiwabayuki/yawaraka-yara:1.0 bash -c "cd /root && bash"
+	docker run --rm -it -v `pwd`/src:/Try2WinDbg kashiwabayuki/try2windbg:1.0 bash -c "cd /Try2WinDbg && bash"
 
 move:
 	-find ./src/ -name "*.exe" -exec cp {} /mnt/d/Transfer \;
 	-find ./src/ -name "*.exe" -exec mv {} ./bin --force \;
 
 compile:
-	docker run --rm -it -v `pwd`/src:/root kashiwabayuki/yawaraka-yara:1.0 bash -c "cd /root && make"
+	docker run --rm -it -v `pwd`/src:/Try2WinDbg kashiwabayuki/try2windbg:1.0 bash -c "cd /Try2WinDbg && make"
 
 run:
 	make compile
