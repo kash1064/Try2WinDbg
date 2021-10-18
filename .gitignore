@@ -1,7 +1,7 @@
-src/*.exe
-src/*.pdb
-bin/*.exe
-symbol/*.pdb
+build/*.exe
+build/*.pdb
+build/bin/*.exe
+build/symbol/*.pdb
 .bash_history
 .wget-hsts
 .python_history

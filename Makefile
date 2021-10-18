@@ -7,13 +7,11 @@ PUTDIR := /mnt/d/Transfer
 CONTAINER := kashiwabayuki/try2windbg:1.0
 
 move:
-	-find ./src/ -name "*.exe" -exec cp {} ${PUTDIR} \;
-	-find ./src/ -name "*.exe" -exec mv {} ./bin --force \;
-	-find ./src/ -name "*.pdb" -exec cp {} ${PUTDIR} \;
-	-find ./src/ -name "*.pdb" -exec mv {} ./symbol --force \;
+	-find ./build/ -name "*.exe" -exec cp {} ${PUTDIR} \;
+	-find ./build/ -name "*.pdb" -exec cp {} ${PUTDIR} \;
 
 compile:
-	docker run --rm -it -v `pwd`/src:/try2windbg ${CONTAINER} bash -c "cd /try2windbg && make"
+	docker run --rm -it -v `pwd`/build:/try2windbg ${CONTAINER} bash -c "cd /try2windbg && make"
 
 run:
 	make compile
@@ -53,4 +51,4 @@ start_docker:
 	sudo /etc/init.d/docker start
 
 login_container:
-	docker run --rm -it -v `pwd`/src:/try2windbg ${CONTAINER} bash -c "cd /try2windbg && bash"
+	docker run --rm -it -v `pwd`/build:/try2windbg ${CONTAINER} bash -c "cd /try2windbg && bash"
