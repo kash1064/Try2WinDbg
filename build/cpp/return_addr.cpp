@@ -6,12 +6,6 @@ int ret_func()
     return 0;
 }
 
-int evil_func()
-{
-    printf("Cracked!!!\n");
-    return 0;
-}
-
 int main()
 {
     printf("Start main\n");
