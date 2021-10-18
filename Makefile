@@ -52,3 +52,4 @@ start_docker:
 
 login_container:
 	docker run --rm -it -v `pwd`/build:/try2windbg ${CONTAINER} bash -c "cd /try2windbg && bash"
+	
