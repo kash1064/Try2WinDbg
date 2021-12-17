@@ -5,3 +5,4 @@ build/symbol/*.pdb
 .bash_history
 .wget-hsts
 .python_history
+/.vs
