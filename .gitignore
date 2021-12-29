@@ -1,8 +1,12 @@
 build/*.exe
 build/*.pdb
 build/bin/*.exe
+build/bin/*.ilk
 build/symbol/*.pdb
 .bash_history
 .wget-hsts
 .python_history
 /.vs
+*.obj
+*.exe
+*.ilk
