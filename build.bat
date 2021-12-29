@@ -1,4 +1,4 @@
 powershell.exe ./clean.ps1
-cl /c ./build/c/helloworld.c
-link /DEBUG /PDB:./build/symbol/helloworld.pdb ./helloworld.obj /OUT:./build/bin/helloworld.exe
+cl /c ./build/c/base64.c
+link /DEBUG /PDB:./build/symbol/base64.pdb ./base64.obj /OUT:./build/bin/base64.exe
 powershell.exe ./clean_obj.ps1
