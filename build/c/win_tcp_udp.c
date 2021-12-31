@@ -33,8 +33,8 @@ int send_http_post(unsigned char *senddata){
     dstAddr.sin_port = htons(port);
     dstAddr.sin_family = AF_INET;
     dstAddr.sin_addr.s_addr = inet_addr(destination);
- 
-    // Socket通信の開始
+
+    // Socket通信の開始(SOCK_STREAMを指定)
     printf("\t==>Creating socket...\n");
     dstSocket = socket(AF_INET, SOCK_STREAM, 0);
     if (dstSocket < 0){
@@ -79,10 +79,57 @@ int send_http_post(unsigned char *senddata){
     return 0;
 }
 
+int send_udp(unsigned char *senddata)
+{
+    char destination[] = RSERVER;
+    unsigned short port = 80;
+    char httphost[] = LSERVER;
+    int dstSocket;
+    int result;
+
+    char toSendText[MAXBUF];
+    int read_size;
+
+    // WSADATAの初期化
+    WSADATA wsaData;
+    WSAStartup(MAKEWORD(2, 0), &wsaData);
+
+    struct sockaddr_in dstAddr;
+    memset(&dstAddr, 0, sizeof(dstAddr));
+    dstAddr.sin_port = htons(port);
+    dstAddr.sin_family = AF_INET;
+    dstAddr.sin_addr.s_addr = inet_addr(destination);
+
+    // Socket通信の開始(SOCK_DGRAMを指定)
+    printf("\t==>Creating socket...\n");
+    dstSocket = socket(AF_INET, SOCK_DGRAM, 0);
+    if (dstSocket < 0)
+    {
+        printf("\t==>Creating socket failed!!\n");
+        return 0;
+    }
+    printf("\t==>Creating socket succeeded!!\n");
+
+    // UDPパケットの送信
+    printf("\t==>Sending UDP...\n");
+    sendto(dstSocket, senddata, strlen(senddata), 0, (SOCKADDR *)&httphost, sizeof(httphost));
+
+    printf("\t==>UDP is sent!!\n");
+    closesocket(dstSocket);
+    WSACleanup();
+
+    return 0;
+}
+
 int main()
 {
-    printf("Data to send...\n");
-    int result = send_http_post("data=test");
+    int result;
+    printf("HTTP POST Data sending...\n");
+    result = send_http_post("data=test");
+
+    printf("UDP Data sending...\n");
+    result = send_udp("UDP test");
+
     printf("Closing...\n");
     return 0;
 }
