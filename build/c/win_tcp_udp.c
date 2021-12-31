@@ -112,7 +112,7 @@ int send_udp(unsigned char *senddata)
 
     // UDPパケットの送信
     printf("\t==>Sending UDP...\n");
-    sendto(dstSocket, senddata, strlen(senddata), 0, (SOCKADDR *)&httphost, sizeof(httphost));
+    sendto(dstSocket, senddata, strlen(senddata), 0, (SOCKADDR *)&dstAddr, sizeof(dstAddr));
 
     printf("\t==>UDP is sent!!\n");
     closesocket(dstSocket);
