@@ -1,13 +1,17 @@
 #include <winsock2.h>
-#include <ws2tcpip.h>
-#include <iphlpapi.h>
 #include <stdio.h>
-#include <windows.h>
-#include <stdint.h>
 #include <stdlib.h>
+#include <stdint.h>
 
-#pragma comment(lib, "iphlpapi.lib")
 #pragma comment(lib, "ws2_32.lib")
+
+// IPアドレスを扱う場合などに利用
+// #include <ws2tcpip.h>
+// #include <iphlpapi.h>
+// #pragma comment(lib, "iphlpapi.lib")
+
+// winsock2.h と併用して使用する場合は、必ずwinsock2.hより後に定義する
+// #include <windows.h>
 
 #include "win_tcp_udp.h"
 
