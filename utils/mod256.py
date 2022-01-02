@@ -1,7 +1,7 @@
 def mod256(n):
-    n = n + 1 & 0x800000ff
+    n = n & 0x800000ff
     if n < 0:
-        n = (n - 1 | 0xffffff00) + 1
+        n = (n - 1 | 0xffffff00)
 
     return n
 
