@@ -6,10 +6,9 @@ def mod256(n):
     return n
 
 def main():
-    for i in range(1000):
-        print(
-            mod256(i)
-        )
+    for i in range(250, 260):
+        print(mod256(i), end=" ")
+    print("")
 
     return
 
