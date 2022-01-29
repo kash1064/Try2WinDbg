@@ -16,7 +16,7 @@ int main(int argc, const char* argv[]) {
 		return 0;
 	}
 
-	HANDLE hDevice = CreateFile(L"\\\\.\\PriorityBooster", GENERIC_WRITE, FILE_SHARE_WRITE,
+	HANDLE hDevice = CreateFile(L"\\\\.\\SecondDriver", GENERIC_WRITE, FILE_SHARE_WRITE,
 		nullptr, OPEN_EXISTING, 0, nullptr);
 	if (hDevice == INVALID_HANDLE_VALUE)
 		return Error("Failed to open device");
