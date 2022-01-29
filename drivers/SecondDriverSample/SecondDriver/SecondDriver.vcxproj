@@ -158,6 +158,9 @@
   <ItemGroup>
     <ClCompile Include="SecondDriver.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SecondDriverCommon.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

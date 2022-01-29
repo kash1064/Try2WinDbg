@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32106.194
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SecondDriverSample", "SecondDriverSample.vcxproj", "{58C64146-2CE1-4384-8657-DF27F91FE47D}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SecondDriver", "SecondDriver\SecondDriver.vcxproj", "{58C64146-2CE1-4384-8657-DF27F91FE47D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SecondDriverClient", "SecondDriverClient\SecondDriverClient.vcxproj", "{2E574AC5-353A-4A20-96E7-0D24F4A5855F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,11 +43,23 @@ Global
 		{58C64146-2CE1-4384-8657-DF27F91FE47D}.Release|x86.ActiveCfg = Release|Win32
 		{58C64146-2CE1-4384-8657-DF27F91FE47D}.Release|x86.Build.0 = Release|Win32
 		{58C64146-2CE1-4384-8657-DF27F91FE47D}.Release|x86.Deploy.0 = Release|Win32
+		{2E574AC5-353A-4A20-96E7-0D24F4A5855F}.Debug|ARM.ActiveCfg = Debug|Win32
+		{2E574AC5-353A-4A20-96E7-0D24F4A5855F}.Debug|ARM64.ActiveCfg = Debug|Win32
+		{2E574AC5-353A-4A20-96E7-0D24F4A5855F}.Debug|x64.ActiveCfg = Debug|x64
+		{2E574AC5-353A-4A20-96E7-0D24F4A5855F}.Debug|x64.Build.0 = Debug|x64
+		{2E574AC5-353A-4A20-96E7-0D24F4A5855F}.Debug|x86.ActiveCfg = Debug|Win32
+		{2E574AC5-353A-4A20-96E7-0D24F4A5855F}.Debug|x86.Build.0 = Debug|Win32
+		{2E574AC5-353A-4A20-96E7-0D24F4A5855F}.Release|ARM.ActiveCfg = Release|Win32
+		{2E574AC5-353A-4A20-96E7-0D24F4A5855F}.Release|ARM64.ActiveCfg = Release|Win32
+		{2E574AC5-353A-4A20-96E7-0D24F4A5855F}.Release|x64.ActiveCfg = Release|x64
+		{2E574AC5-353A-4A20-96E7-0D24F4A5855F}.Release|x64.Build.0 = Release|x64
+		{2E574AC5-353A-4A20-96E7-0D24F4A5855F}.Release|x86.ActiveCfg = Release|Win32
+		{2E574AC5-353A-4A20-96E7-0D24F4A5855F}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {8485E6AF-E18A-4463-9C94-68A93E9CCD14}
+		SolutionGuid = {02C7ED06-A7C3-41D2-8B68-85F75F1A8921}
 	EndGlobalSection
 EndGlobal
