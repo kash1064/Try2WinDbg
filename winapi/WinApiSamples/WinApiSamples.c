@@ -2,7 +2,7 @@
 #include <windows.h>
 
 int main(void) {
-    int lpBuffer[] = { 1 };
+    char lpBuffer[] = { 0x41, 0x42, 0x43 };
     const WCHAR* lpFileName = L"C:\\Users\\Tadpole01\\Downloads\\test.txt";
 
     HANDLE hFile = CreateFile(
@@ -17,7 +17,6 @@ int main(void) {
 
     DWORD nNumberOfBytesToWrite = sizeof(lpBuffer);
     DWORD lpNumberOfBytesWritten;
-
     BOOL bResult = WriteFile(
         hFile,
         lpBuffer,
@@ -25,7 +24,6 @@ int main(void) {
         &lpNumberOfBytesWritten,
         NULL
     );
-
     CloseHandle(hFile);
 	return 0;
 }
