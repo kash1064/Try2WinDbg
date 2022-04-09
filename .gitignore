@@ -10,3 +10,5 @@ build/symbol/*.pdb
 *.obj
 *.exe
 *.ilk
+/winapi/WinApiSamples/Debug
+/winapi/WinApiSamples/.vs/WinApiSamples/v16
